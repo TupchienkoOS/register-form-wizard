@@ -1,0 +1,14 @@
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+  color: #fff;
+  background-color: #3882af;
+  border-color: #3882af;
+}
+
+.btn-primary:disabled {
+  color: #fff;
+  background-color: #4c6877;
+  border-color: #4c6877;
+}

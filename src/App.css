@@ -1,38 +1,123 @@
-.App {
+body {
+  background: rgba(205, 221, 228, 1);
+  background: -moz-linear-gradient(
+    left,
+    rgba(205, 221, 228, 1) 0%,
+    rgba(185, 202, 212, 1) 25%,
+    rgba(155, 178, 191, 1) 53%,
+    rgba(182, 218, 241, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, rgba(205, 221, 228, 1)),
+    color-stop(25%, rgba(185, 202, 212, 1)),
+    color-stop(53%, rgba(155, 178, 191, 1)),
+    color-stop(100%, rgba(182, 218, 241, 1))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    rgba(205, 221, 228, 1) 0%,
+    rgba(185, 202, 212, 1) 25%,
+    rgba(155, 178, 191, 1) 53%,
+    rgba(182, 218, 241, 1) 100%
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(205, 221, 228, 1) 0%,
+    rgba(185, 202, 212, 1) 25%,
+    rgba(155, 178, 191, 1) 53%,
+    rgba(182, 218, 241, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    left,
+    rgba(205, 221, 228, 1) 0%,
+    rgba(185, 202, 212, 1) 25%,
+    rgba(155, 178, 191, 1) 53%,
+    rgba(182, 218, 241, 1) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(205, 221, 228, 1) 0%,
+    rgba(185, 202, 212, 1) 25%,
+    rgba(155, 178, 191, 1) 53%,
+    rgba(182, 218, 241, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cddde4', endColorstr='#b6daf1', GradientType=1 );
+}
+.form-group {
+  margin-bottom: 0px;
+}
+form {
+  border: 0px;
+  padding: 20px 30px;
+  margin-top: 5vh;
+
+  -webkit-box-shadow: 11px 13px 29px 0px rgba(0, 0, 0, 0.61);
+  -moz-box-shadow: 11px 13px 29px 0px rgba(0, 0, 0, 0.61);
+  box-shadow: 11px 13px 29px 0px rgba(0, 0, 0, 0.61);
+  height: 450px;
+  width: 300px;
+}
+/* .container {
+  width: 84%;
+  margin-left: 50px;
+} */
+.progressbar {
+  counter-reset: step;
+}
+.progressbar li {
+  list-style-type: none;
+  float: left;
+  width: 25%;
+  position: relative;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  border: 1px solid white;
+  display: block;
+  text-align: center;
+  margin: 15px auto 0 auto;
+  border-radius: 50%;
+  background-color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.progressbar li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  top: 33px;
+  left: -50%;
+  z-index: -1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.progressbar li:first-child:after {
+  content: none;
 }
 
-.App-link {
-  color: #61dafb;
+/* .progressbar li.active {
+  null;
+} */
+
+.progressbar li.active:before {
+  border-color: #7097ae;
+  background-color: #ddd;
+  content: "√";
+  font-weight: bold;
+  font-size: 22px;
+  color: #7097ae;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.progressbar li.active + li:after {
+  background-color: #7097ae;
+  border-color: #7097ae;
+  border: 1px solid #7097ae;
 }
