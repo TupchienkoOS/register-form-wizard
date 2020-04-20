@@ -1,16 +1,17 @@
 import React from "react";
 import PagerButtons from "./PagerButtons";
-import { Input } from "./Input";
 import ProgressBar from "./ProgressBar";
-import Countries from "../data/Countries";
-import Cities from "../data/Cities";
+import LoginPage1 from "./loginPages/LoginPage#1";
+import LoginPage2 from "./loginPages/LoginPage#2";
+import LoginPage3 from "./loginPages/LoginPage#3";
+import LoginPage4 from "./loginPages/LoginPage#4";
 
 class LoginForm extends React.Component {
   constructor() {
     super();
     this.state = {
       firstName: "",
-      lastname: "",
+      lastName: "",
       gender: "male",
       password: "",
       repeatPassword: "",
@@ -18,6 +19,8 @@ class LoginForm extends React.Component {
       email: "",
       mobile: "",
       country: "1",
+      city: "1",
+      avatar: "",
       page: 1,
       confirmed: false,
     };
@@ -29,6 +32,16 @@ class LoginForm extends React.Component {
     });
   };
 
+  onChangeAvatar = (event) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      this.setState({
+        avatar: event.target.result,
+      });
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
+
   onConfirmForm = () => {
     this.setState({
       confirmed: true,
@@ -36,153 +49,7 @@ class LoginForm extends React.Component {
   };
 
   onChangeInput = (event) => {
-    debugger;
     this.setState({ [event.target.name]: event.target.value });
-  };
-
-  loginPage1 = () => {
-    return (
-      <div>
-        <Input
-          type={"text"}
-          id={"firstName"}
-          name={"firstName"}
-          label={"FirstName"}
-          placeholder={"Firstname"}
-          value={this.state.firstName}
-          onChange={this.onChangeInput}
-          errors={this.state.errors.firstName}
-        />
-        <Input
-          type={"text"}
-          id={"lastName"}
-          name={"lastName"}
-          label={"LastName"}
-          placeholder={"Lastname"}
-          value={this.state.lastName}
-          onChange={this.onChangeInput}
-          errors={this.state.errors.lastName}
-        />
-        <Input
-          type={"password"}
-          id={"password"}
-          name={"password"}
-          label={"Password"}
-          placeholder={"Password"}
-          value={this.state.password}
-          onChange={this.onChangeInput}
-          errors={this.state.errors.password}
-        />
-        <Input
-          type={"password"}
-          id={"repeatPassword"}
-          name={"repeatPassword"}
-          label={"Repeat password"}
-          placeholder={"Repeat password"}
-          value={this.state.repeatPassword}
-          onChange={this.onChangeInput}
-          errors={this.state.errors.repeatPassword}
-        />
-        <div>
-          <label className="mb-0 mt-1">Gender</label>
-        </div>
-        <div className="form-check">
-          <input
-            className="form-check-input"
-            type="radio"
-            id="genderMale"
-            name="gender"
-            value="male"
-            checked={this.state.gender === "male"}
-            onChange={this.onChangeInput}
-          />
-          <label className="form-check-label" htmlFor="genderMale">
-            Male
-          </label>
-        </div>
-        <div className="form-check form-check-sm">
-          <input
-            className="form-check-input "
-            type="radio"
-            id="genderFemale"
-            name="gender"
-            value="female"
-            checked={this.state.gender === "female"}
-            onChange={this.onChangeInput}
-          />
-          <label className="form-check-label" htmlFor="genderFemale">
-            Female
-          </label>
-        </div>
-      </div>
-    );
-  };
-
-  loginPage2 = () => {
-    const CitiesFitered = Object.keys(Cities).filter(
-      (city) => Cities[city].country + "" === this.state.country
-    );
-    return (
-      <div>
-        <Input
-          type={"email"}
-          id={"email"}
-          name={"email"}
-          label={"Email"}
-          placeholder={"Email"}
-          value={this.state.email}
-          onChange={this.onChangeInput}
-          errors={this.state.errors.email}
-        />
-        <Input
-          type={"tel"}
-          id={"mobile"}
-          name={"mobile"}
-          label={"Mobile"}
-          placeholder={"Mobile"}
-          value={this.state.mobile}
-          onChange={this.onChangeInput}
-          errors={this.state.errors.mobile}
-        />
-        <div className="form-group form-group-sm m-1">
-          <label htmlFor="country" className="m-1">
-            Country
-          </label>
-          <select
-            className="form-control form-control-sm"
-            id="country"
-            name="country"
-            onChange={this.onChangeInput}
-          >
-            {Countries.map((country) => {
-              return (
-                <option key={country.id} id={country.id} value={country.id}>
-                  {country.name}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        <div className="form-group form-group-sm m-1">
-          <label htmlFor="city" className="m-1">
-            City
-          </label>
-          <select
-            className="form-control form-control-sm"
-            id="city"
-            onChange={this.onChangeInput}
-          >
-            {CitiesFitered.map((city) => {
-              return (
-                <option key={city} id={city} value={city}>
-                  {Cities[city].name}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-      </div>
-    );
   };
 
   render() {
@@ -200,8 +67,44 @@ class LoginForm extends React.Component {
           <div className="col-md-4 col-sm-4 col-xs-12 "></div>
           <div className="col-md-4 col-sm-4 col-xs-12 ">
             <form>
-              {this.state.page === 1 ? this.loginPage1() : null}
-              {this.state.page === 2 ? this.loginPage2() : null}
+              {this.state.page === 1 ? (
+                <LoginPage1
+                  firstName={this.state.firstName}
+                  lastName={this.state.lastName}
+                  password={this.state.password}
+                  repeatPassword={this.state.repeatPassword}
+                  gender={this.state.gender}
+                  errors={this.state.errors}
+                  onChangeInput={this.onChangeInput}
+                />
+              ) : null}
+              {this.state.page === 2 ? (
+                <LoginPage2
+                  email={this.state.email}
+                  mobile={this.state.mobile}
+                  country={this.state.country}
+                  errors={this.state.errors}
+                  onChangeInput={this.onChangeInput}
+                />
+              ) : null}
+              {this.state.page === 3 ? (
+                <LoginPage3
+                  avatar={this.state.avatar}
+                  errors={this.state.errors}
+                  onChangeAvatar={this.onChangeAvatar}
+                />
+              ) : null}
+              {this.state.page === 4 ? (
+                <LoginPage4
+                  firstName={this.state.firstName}
+                  lastName={this.state.lastName}
+                  email={this.state.email}
+                  mobile={this.state.mobile}
+                  countryId={this.state.country}
+                  city={this.state.city}
+                  avatar={this.state.avatar}
+                />
+              ) : null}
               <PagerButtons
                 onChangePage={this.onChangePage}
                 page={this.state.page}

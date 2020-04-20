@@ -8,7 +8,7 @@ export const PagerButtons = ({
 }) => {
   const confirmButton = () => {
     return (
-      <div className="d-flex justify-content-center ">
+      <div className="d-flex justify-content-center m-1">
         <button
           type="button"
           className="btn btn-primary btn-block btn-sm "
@@ -23,7 +23,7 @@ export const PagerButtons = ({
 
   const pagerButtons = () => {
     return (
-      <div className="d-flex justify-content-center mt-2">
+      <div className="d-flex justify-content-around mt-2">
         <button
           type="button"
           className="btn btn-secondary btn-block btn-sm mt-1"
