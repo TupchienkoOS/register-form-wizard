@@ -13,7 +13,11 @@ export default ({ avatar, onChangeAvatar, errors }) => {
       <div className="custom-file mt-1">
         <input
           type="file"
-          className="custom-file-input custom-file-input-sm"
+          className={
+            errors
+              ? "custom-file-input custom-file-input-sm is-invalid"
+              : "custom-file-input custom-file-input-sm"
+          }
           id="avatar"
           name="avatar"
           onChange={onChangeAvatar}
@@ -21,7 +25,7 @@ export default ({ avatar, onChangeAvatar, errors }) => {
         <label className="custom-file-label" htmlFor="avatar">
           Choose avatar...
         </label>
-        <div className="invalid-feedback">test message</div>
+        <div className="invalid-feedback">Required</div>
       </div>
     </div>
   );

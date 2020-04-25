@@ -17,7 +17,11 @@ export const Input = ({
       </label>
       <input
         type={type}
-        className="form-control form-control-sm"
+        className={
+          errors
+            ? "form-control form-control-sm is-invalid"
+            : "form-control form-control-sm"
+        }
         id={id}
         name={name}
         placeholder={placeholder}

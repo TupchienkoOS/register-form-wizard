@@ -3,7 +3,7 @@ import Countries from "../../data/Countries";
 import Cities from "../../data/Cities";
 import { Input } from "../Input";
 
-export default ({ email, mobile, country, onChangeInput, errors }) => {
+export default ({ email, mobile, country, city, onChangeInput, errors }) => {
   const CitiesFiteredId = Object.keys(Cities).filter(
     (city) => Cities[city].country + "" === country
   );
@@ -34,13 +34,17 @@ export default ({ email, mobile, country, onChangeInput, errors }) => {
           Country
         </label>
         <select
-          className="form-control form-control-sm"
+          className={
+            errors.country
+              ? "form-control form-control-sm is-invalid"
+              : "form-control form-control-sm"
+          }
           id="country"
           name="country"
           onChange={onChangeInput}
+          value={country}
         >
-          {" "}
-          <option id="0" value="0" defaultValue>
+          <option id="0" value="">
             Select country
           </option>
           {Countries.map((country) => {
@@ -62,13 +66,18 @@ export default ({ email, mobile, country, onChangeInput, errors }) => {
           City
         </label>
         <select
-          className="form-control form-control-sm"
+          className={
+            errors.city
+              ? "form-control form-control-sm is-invalid"
+              : "form-control form-control-sm"
+          }
           id="city"
           name="city"
           placeholder="Select city"
           onChange={onChangeInput}
+          value={city}
         >
-          <option id="0" value="0" defaultValue>
+          <option id="0" value="">
             Select city
           </option>
           {CitiesFiteredId.map((city) => {

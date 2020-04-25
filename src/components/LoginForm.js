@@ -41,55 +41,74 @@ class LoginForm extends React.Component {
 
   validationPage1 = () => {
     if (this.state.firstName.length < 5) {
-      this.setState({
-        errors: validationRules["firstName"],
-      });
+      this.setState((prevState, prevProps) => ({
+        errors: Object.assign(prevState.errors, validationRules["firstName"]),
+      }));
     }
     if (this.state.lastName.length < 5) {
-      this.setState({
-        errors: validationRules["lastName"],
-      });
+      this.setState((prevState, prevProps) => ({
+        errors: Object.assign(prevState.errors, validationRules["lastName"]),
+      }));
     }
     if (this.state.password.length < 6) {
-      this.setState({
-        errors: validationRules["password"],
-      });
+      this.setState((prevState, prevProps) => ({
+        errors: Object.assign(prevState.errors, validationRules["password"]),
+      }));
     }
-    if (this.state.repeatPassword !== this.state.password) {
-      this.setState({
-        errors: validationRules["repeatPassword"],
-      });
+    debugger;
+    if (
+      this.state.repeatPassword !== this.state.password ||
+      this.state.repeatPassword.length === 0
+    ) {
+      this.setState((prevState, prevProps) => ({
+        errors: Object.assign(
+          prevState.errors,
+          validationRules["repeatPassword"]
+        ),
+      }));
     }
     if (this.state.gender === "") {
-      this.setState({ errors: validationRules["gender"] });
+      this.setState((prevState, prevProps) => ({
+        errors: Object.assign(prevState.errors, validationRules["gender"]),
+      }));
     }
   };
 
   validationPage2 = () => {
     if (!this.state.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
-      this.setState({ errors: validationRules["email"] });
+      this.setState((prevState, prevProps) => ({
+        errors: Object.assign(prevState.errors, validationRules["email"]),
+      }));
     }
     if (!this.state.mobile.match(/(^[+]{0,1}((38){0,1}|8{0,1})0[1-9]{9}$)/i)) {
-      this.setState({ errors: validationRules["mobile"] });
+      this.setState((prevState, prevProps) => ({
+        errors: Object.assign(prevState.errors, validationRules["mobile"]),
+      }));
     }
-    if (this.state.country === "") {
-      this.setState({ errors: validationRules["country"] });
+    if (this.state.country.length === 0) {
+      this.setState((prevState, prevProps) => ({
+        errors: Object.assign(prevState.errors, validationRules["country"]),
+      }));
     }
     if (this.state.city.length === 0) {
-      this.setState({ errors: validationRules["city"] });
+      this.setState((prevState, prevProps) => ({
+        errors: Object.assign(prevState.errors, validationRules["city"]),
+      }));
     }
   };
 
   validationPage3 = () => {
     if (this.state.avatar === "") {
-      this.setState({
-        errors: validationRules["avatar"],
-      });
+      this.setState((prevState, prevProps) => ({
+        errors: Object.assign(prevState.errors, validationRules["avatar"]),
+      }));
     }
   };
 
   onChangePage = (param) => {
     debugger;
+    console.log(this.state);
+    this.setState({ errors: "" });
     if (this.state.page === 1) {
       this.validationPage1();
     } else if (this.state.page === 2) {
@@ -157,6 +176,7 @@ class LoginForm extends React.Component {
                   email={this.state.email}
                   mobile={this.state.mobile}
                   country={this.state.country}
+                  city={this.state.city}
                   errors={this.state.errors}
                   onChangeInput={this.onChangeInput}
                 />
