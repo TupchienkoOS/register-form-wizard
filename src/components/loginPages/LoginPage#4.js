@@ -37,7 +37,7 @@ export default ({
         <strong>Mobile:</strong> {mobile}
       </div>
       <div className="m-1">
-        <strong>Location:</strong>
+        <strong>Location: </strong>
         {CountryName()},{Cities[city].name}
       </div>
     </div>

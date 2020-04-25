@@ -6,6 +6,19 @@ import LoginPage2 from "./loginPages/LoginPage#2";
 import LoginPage3 from "./loginPages/LoginPage#3";
 import LoginPage4 from "./loginPages/LoginPage#4";
 
+const validationRules = {
+  firstName: { firstName: "Must be 5 characters or more" },
+  lastName: { lastName: "Must be 5 characters or more" },
+  password: { password: "Must be 6 characters or more" },
+  repeatPassword: { repeatPassword: "Must be equal password" },
+  gender: { gender: "Required" },
+  email: { email: "Email not valid" },
+  mobile: { mobile: "Mobile not valid" },
+  country: { country: "Select your country" },
+  city: { city: "Select your city" },
+  avatar: { avatar: "Upload your phot" },
+};
+
 class LoginForm extends React.Component {
   constructor() {
     super();
@@ -13,22 +26,83 @@ class LoginForm extends React.Component {
       firstName: "",
       lastName: "",
       gender: "male",
-      password: "",
-      repeatPassword: "",
+      password: "1234567",
+      repeatPassword: "1234567",
       errors: {},
       email: "",
       mobile: "",
-      country: "1",
-      city: "1",
+      country: "",
+      city: "",
       avatar: "",
       page: 1,
       confirmed: false,
     };
   }
 
+  validationPage1 = () => {
+    if (this.state.firstName.length < 5) {
+      this.setState({
+        errors: validationRules["firstName"],
+      });
+    }
+    if (this.state.lastName.length < 5) {
+      this.setState({
+        errors: validationRules["lastName"],
+      });
+    }
+    if (this.state.password.length < 6) {
+      this.setState({
+        errors: validationRules["password"],
+      });
+    }
+    if (this.state.repeatPassword !== this.state.password) {
+      this.setState({
+        errors: validationRules["repeatPassword"],
+      });
+    }
+    if (this.state.gender === "") {
+      this.setState({ errors: validationRules["gender"] });
+    }
+  };
+
+  validationPage2 = () => {
+    if (!this.state.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+      this.setState({ errors: validationRules["email"] });
+    }
+    if (!this.state.mobile.match(/(^[+]{0,1}((38){0,1}|8{0,1})0[1-9]{9}$)/i)) {
+      this.setState({ errors: validationRules["mobile"] });
+    }
+    if (this.state.country === "") {
+      this.setState({ errors: validationRules["country"] });
+    }
+    if (this.state.city.length === 0) {
+      this.setState({ errors: validationRules["city"] });
+    }
+  };
+
+  validationPage3 = () => {
+    if (this.state.avatar === "") {
+      this.setState({
+        errors: validationRules["avatar"],
+      });
+    }
+  };
+
   onChangePage = (param) => {
-    this.setState({
-      page: param === "next" ? this.state.page + 1 : this.state.page - 1,
+    debugger;
+    if (this.state.page === 1) {
+      this.validationPage1();
+    } else if (this.state.page === 2) {
+      this.validationPage2();
+    } else if (this.state.page === 3) {
+      this.validationPage3();
+    }
+    this.setState((prevState, prevProps) => {
+      if (Object.keys(prevState.errors).length === 0) {
+        this.setState({
+          page: param === "next" ? this.state.page + 1 : this.state.page - 1,
+        });
+      }
     });
   };
 

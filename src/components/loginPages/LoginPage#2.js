@@ -10,7 +10,7 @@ export default ({ email, mobile, country, onChangeInput, errors }) => {
   return (
     <div>
       <Input
-        type={"email"}
+        type={"text"}
         id={"email"}
         name={"email"}
         label={"Email"}
@@ -39,6 +39,10 @@ export default ({ email, mobile, country, onChangeInput, errors }) => {
           name="country"
           onChange={onChangeInput}
         >
+          {" "}
+          <option id="0" value="0" defaultValue>
+            Select country
+          </option>
           {Countries.map((country) => {
             return (
               <option key={country.id} id={country.id} value={country.id}>
@@ -47,6 +51,11 @@ export default ({ email, mobile, country, onChangeInput, errors }) => {
             );
           })}
         </select>
+        {errors.country ? (
+          <small id="country" className="form-text text-danger">
+            {errors.country}
+          </small>
+        ) : null}
       </div>
       <div className="form-group form-group-sm m-1">
         <label htmlFor="city" className="m-1">
@@ -56,8 +65,12 @@ export default ({ email, mobile, country, onChangeInput, errors }) => {
           className="form-control form-control-sm"
           id="city"
           name="city"
+          placeholder="Select city"
           onChange={onChangeInput}
         >
+          <option id="0" value="0" defaultValue>
+            Select city
+          </option>
           {CitiesFiteredId.map((city) => {
             return (
               <option key={city} id={city} value={city}>
@@ -66,6 +79,11 @@ export default ({ email, mobile, country, onChangeInput, errors }) => {
             );
           })}
         </select>
+        {errors.city ? (
+          <small id="city" className="form-text text-danger">
+            {errors.city}
+          </small>
+        ) : null}
       </div>
     </div>
   );

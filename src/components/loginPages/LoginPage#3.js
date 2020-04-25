@@ -19,7 +19,7 @@ export default ({ avatar, onChangeAvatar, errors }) => {
           onChange={onChangeAvatar}
         ></input>
         <label className="custom-file-label" htmlFor="avatar">
-          Choose file...
+          Choose avatar...
         </label>
         <div className="invalid-feedback">test message</div>
       </div>
