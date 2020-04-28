@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/register-form-wizard/static/css/main.109dcf47.chunk.css",
+    "main.js": "/register-form-wizard/static/js/main.49594203.chunk.js",
+    "main.js.map": "/register-form-wizard/static/js/main.49594203.chunk.js.map",
+    "runtime-main.js": "/register-form-wizard/static/js/runtime-main.09602b39.js",
+    "runtime-main.js.map": "/register-form-wizard/static/js/runtime-main.09602b39.js.map",
+    "static/css/2.74189dbb.chunk.css": "/register-form-wizard/static/css/2.74189dbb.chunk.css",
+    "static/js/2.e20ec273.chunk.js": "/register-form-wizard/static/js/2.e20ec273.chunk.js",
+    "static/js/2.e20ec273.chunk.js.map": "/register-form-wizard/static/js/2.e20ec273.chunk.js.map",
+    "index.html": "/register-form-wizard/index.html",
+    "precache-manifest.faecab7cdb7e6bf415c207a383214190.js": "/register-form-wizard/precache-manifest.faecab7cdb7e6bf415c207a383214190.js",
+    "service-worker.js": "/register-form-wizard/service-worker.js",
+    "static/css/2.74189dbb.chunk.css.map": "/register-form-wizard/static/css/2.74189dbb.chunk.css.map",
+    "static/css/main.109dcf47.chunk.css.map": "/register-form-wizard/static/css/main.109dcf47.chunk.css.map",
+    "static/js/2.e20ec273.chunk.js.LICENSE.txt": "/register-form-wizard/static/js/2.e20ec273.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.09602b39.js",
+    "static/css/2.74189dbb.chunk.css",
+    "static/js/2.e20ec273.chunk.js",
+    "static/css/main.109dcf47.chunk.css",
+    "static/js/main.49594203.chunk.js"
+  ]
+}
