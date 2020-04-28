@@ -22,6 +22,7 @@ const validationRules = {
 class LoginForm extends React.Component {
   constructor() {
     super();
+    console.log(this);
     this.state = {
       firstName: "",
       lastName: "",
