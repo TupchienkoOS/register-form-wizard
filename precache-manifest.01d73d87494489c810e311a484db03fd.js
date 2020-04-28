@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "285896a84f14d10cafd2531352d2e43e",
+    "revision": "a484e231a8c7e1e2427ab83237a79efc",
     "url": "/register-form-wizard/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/register-form-wizard/static/css/2.74189dbb.chunk.css"
   },
   {
-    "revision": "3121382c89c1aa3aee54",
+    "revision": "a168ba91d847cb214056",
     "url": "/register-form-wizard/static/css/main.109dcf47.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/register-form-wizard/static/js/2.e20ec273.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3121382c89c1aa3aee54",
-    "url": "/register-form-wizard/static/js/main.49594203.chunk.js"
+    "revision": "a168ba91d847cb214056",
+    "url": "/register-form-wizard/static/js/main.60567744.chunk.js"
   },
   {
     "revision": "e338abce3e72c1cd10bf",
