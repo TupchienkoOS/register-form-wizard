@@ -1,4 +1,5 @@
 import React from "react";
+import defaultAvatar from "../../images/Blank-Profile-Icon.jpg";
 
 export default ({ avatar, onChangeAvatar, errors }) => {
   return (
@@ -7,7 +8,7 @@ export default ({ avatar, onChangeAvatar, errors }) => {
         <img
           className="img-thumbnail"
           alt="default icon"
-          src={avatar === "" ? "./images/Blank-Profile-Icon.jpg" : avatar}
+          src={avatar === "" ? defaultAvatar : avatar}
         />
       </div>
       <div className="custom-file mt-1">
@@ -25,7 +26,11 @@ export default ({ avatar, onChangeAvatar, errors }) => {
         <label className="custom-file-label" htmlFor="avatar">
           Choose avatar...
         </label>
-        <div className="invalid-feedback">Required</div>
+        {errors ? (
+          <small id="avatar" className="form-text text-danger">
+            {errors}
+          </small>
+        ) : null}
       </div>
     </div>
   );

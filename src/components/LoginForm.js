@@ -56,7 +56,6 @@ class LoginForm extends React.Component {
         errors: Object.assign(prevState.errors, validationRules["password"]),
       }));
     }
-    debugger;
     if (
       this.state.repeatPassword !== this.state.password ||
       this.state.repeatPassword.length === 0
@@ -105,17 +104,21 @@ class LoginForm extends React.Component {
       }));
     }
   };
-  // TODO: Prev Button action without validation
+
+  validation = () => {
+    if (this.state.page === 1) {
+      this.validationPage1();
+    } else if (this.state.page === 2) {
+      this.validationPage2();
+    } else if (this.state.page === 3) {
+      this.validationPage3();
+    }
+  };
+
   // TODO: Add required error and validation
   onChangePage = (param) => {
     if (param === "next") {
-      if (this.state.page === 1) {
-        this.validationPage1();
-      } else if (this.state.page === 2) {
-        this.validationPage2();
-      } else if (this.state.page === 3) {
-        this.validationPage3();
-      }
+      this.validation();
       this.setState((prevState, prevProps) => {
         if (Object.keys(prevState.errors).length === 0) {
           this.setState({
@@ -147,7 +150,6 @@ class LoginForm extends React.Component {
   };
 
   onChangeInput = (event) => {
-    debugger;
     const errors = this.state.errors;
     delete this.state.errors[event.target.name];
     this.setState({
@@ -195,7 +197,7 @@ class LoginForm extends React.Component {
               {this.state.page === 3 ? (
                 <LoginPage3
                   avatar={this.state.avatar}
-                  errors={this.state.errors}
+                  errors={this.state.errors.avatar}
                   onChangeAvatar={this.onChangeAvatar}
                 />
               ) : null}
