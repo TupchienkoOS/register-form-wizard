@@ -105,25 +105,29 @@ class LoginForm extends React.Component {
       }));
     }
   };
-
+  // TODO: Prev Button action without validation
+  // TODO: Add required error and validation
   onChangePage = (param) => {
-    debugger;
-    console.log(this.state);
-    this.setState({ errors: "" });
-    if (this.state.page === 1) {
-      this.validationPage1();
-    } else if (this.state.page === 2) {
-      this.validationPage2();
-    } else if (this.state.page === 3) {
-      this.validationPage3();
-    }
-    this.setState((prevState, prevProps) => {
-      if (Object.keys(prevState.errors).length === 0) {
-        this.setState({
-          page: param === "next" ? this.state.page + 1 : this.state.page - 1,
-        });
+    if (param === "next") {
+      if (this.state.page === 1) {
+        this.validationPage1();
+      } else if (this.state.page === 2) {
+        this.validationPage2();
+      } else if (this.state.page === 3) {
+        this.validationPage3();
       }
-    });
+      this.setState((prevState, prevProps) => {
+        if (Object.keys(prevState.errors).length === 0) {
+          this.setState({
+            page: this.state.page + 1,
+          });
+        }
+      });
+    } else if (param === "prev") {
+      this.setState({
+        page: this.state.page - 1,
+      });
+    }
   };
 
   onChangeAvatar = (event) => {
@@ -143,7 +147,13 @@ class LoginForm extends React.Component {
   };
 
   onChangeInput = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+    debugger;
+    const errors = this.state.errors;
+    delete this.state.errors[event.target.name];
+    this.setState({
+      [event.target.name]: event.target.value,
+      errors,
+    });
   };
 
   render() {
