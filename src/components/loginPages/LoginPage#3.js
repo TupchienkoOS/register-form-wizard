@@ -1,7 +1,20 @@
 import React from "react";
 import defaultAvatar from "../../images/Blank-Profile-Icon.jpg";
 
-export default ({ avatar, onChangeAvatar, errors }) => {
+export default ({ avatar, onChangeInput, errors }) => {
+  const onChangeAvatar = (event) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      onChangeInput({
+        target: {
+          name: "avatar",
+          value: event.target.result,
+        },
+      });
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
+
   return (
     <div>
       <div>

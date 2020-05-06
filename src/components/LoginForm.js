@@ -19,47 +19,56 @@ const validationRules = {
   avatar: { avatar: "Upload your phot" },
 };
 
+const regexEmailStr = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
+const regexMobStr = /(^[+]{0,1}((38){0,1}|8{0,1})0[1-9]{9}$)/i;
+
 class LoginForm extends React.Component {
   constructor() {
     super();
-    console.log(this);
     this.state = {
-      firstName: "",
-      lastName: "",
-      gender: "male",
-      password: "",
-      repeatPassword: "",
+      fields: {
+        firstName: "",
+        lastName: "",
+        gender: "male",
+        password: "",
+        repeatPassword: "",
+        email: "",
+        mobile: "",
+        country: "",
+        city: "",
+        avatar: "",
+      },
       errors: {},
-      email: "",
-      mobile: "",
-      country: "",
-      city: "",
-      avatar: "",
       page: 1,
       confirmed: false,
     };
   }
 
   validationPage1 = () => {
-    if (this.state.firstName.length < 5) {
+    debugger;
+    const {
+      firstName,
+      lastName,
+      password,
+      repeatPassword,
+      gender,
+    } = this.state.fields;
+    if (firstName.length < 5) {
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["firstName"]),
       }));
     }
-    if (this.state.lastName.length < 5) {
+    if (lastName.length < 5) {
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["lastName"]),
       }));
     }
-    if (this.state.password.length < 6) {
+    if (password.length < 6) {
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["password"]),
       }));
     }
-    if (
-      this.state.repeatPassword !== this.state.password ||
-      this.state.repeatPassword.length === 0
-    ) {
+    if (repeatPassword !== password || repeatPassword.length === 0) {
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(
           prevState.errors,
@@ -67,7 +76,7 @@ class LoginForm extends React.Component {
         ),
       }));
     }
-    if (this.state.gender === "") {
+    if (gender === "") {
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["gender"]),
       }));
@@ -75,22 +84,23 @@ class LoginForm extends React.Component {
   };
 
   validationPage2 = () => {
-    if (!this.state.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+    const { email, mobile, country, city } = this.state.fields;
+    if (!email.match(regexEmailStr)) {
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["email"]),
       }));
     }
-    if (!this.state.mobile.match(/(^[+]{0,1}((38){0,1}|8{0,1})0[1-9]{9}$)/i)) {
+    if (!mobile.match(regexMobStr)) {
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["mobile"]),
       }));
     }
-    if (this.state.country.length === 0) {
+    if (country.length === 0) {
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["country"]),
       }));
     }
-    if (this.state.city.length === 0) {
+    if (city.length === 0) {
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["city"]),
       }));
@@ -98,7 +108,7 @@ class LoginForm extends React.Component {
   };
 
   validationPage3 = () => {
-    if (this.state.avatar === "") {
+    if (this.state.fields.avatar === "") {
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["avatar"]),
       }));
@@ -133,16 +143,6 @@ class LoginForm extends React.Component {
     }
   };
 
-  onChangeAvatar = (event) => {
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      this.setState({
-        avatar: event.target.result,
-      });
-    };
-    reader.readAsDataURL(event.target.files[0]);
-  };
-
   onConfirmForm = () => {
     this.setState({
       confirmed: true,
@@ -152,13 +152,17 @@ class LoginForm extends React.Component {
   onChangeInput = (event) => {
     const errors = this.state.errors;
     delete this.state.errors[event.target.name];
+    const { name, value } = event.target;
     this.setState({
-      [event.target.name]: event.target.value,
+      fields: Object.assign(this.state.fields, {
+        [name]: value,
+      }),
       errors,
     });
   };
 
   render() {
+    const fields = this.state.fields;
     return (
       <div className="container">
         <div className="row">
@@ -175,41 +179,41 @@ class LoginForm extends React.Component {
             <form>
               {this.state.page === 1 ? (
                 <LoginPage1
-                  firstName={this.state.firstName}
-                  lastName={this.state.lastName}
-                  password={this.state.password}
-                  repeatPassword={this.state.repeatPassword}
-                  gender={this.state.gender}
+                  firstName={fields.firstName}
+                  lastName={fields.lastName}
+                  password={fields.password}
+                  repeatPassword={fields.repeatPassword}
+                  gender={fields.gender}
                   errors={this.state.errors}
                   onChangeInput={this.onChangeInput}
                 />
               ) : null}
               {this.state.page === 2 ? (
                 <LoginPage2
-                  email={this.state.email}
-                  mobile={this.state.mobile}
-                  country={this.state.country}
-                  city={this.state.city}
+                  email={fields.email}
+                  mobile={fields.mobile}
+                  country={fields.country}
+                  city={fields.city}
                   errors={this.state.errors}
                   onChangeInput={this.onChangeInput}
                 />
               ) : null}
               {this.state.page === 3 ? (
                 <LoginPage3
-                  avatar={this.state.avatar}
+                  avatar={fields.avatar}
                   errors={this.state.errors.avatar}
-                  onChangeAvatar={this.onChangeAvatar}
+                  onChangeInput={this.onChangeInput}
                 />
               ) : null}
               {this.state.page === 4 ? (
                 <LoginPage4
-                  firstName={this.state.firstName}
-                  lastName={this.state.lastName}
-                  email={this.state.email}
-                  mobile={this.state.mobile}
-                  countryId={this.state.country}
-                  city={this.state.city}
-                  avatar={this.state.avatar}
+                  firstName={fields.firstName}
+                  lastName={fields.lastName}
+                  email={fields.email}
+                  mobile={fields.mobile}
+                  countryId={fields.country}
+                  city={fields.city}
+                  avatar={this.state.fields.avatar}
                 />
               ) : null}
               <PagerButtons

@@ -1,7 +1,7 @@
 import React from "react";
 import Countries from "../../data/Countries";
 import Cities from "../../data/Cities";
-import { Input } from "../Input";
+import { Input } from "./input/Input.js";
 
 export default ({ email, mobile, country, city, onChangeInput, errors }) => {
   const CitiesFiteredId = Object.keys(Cities).filter(
