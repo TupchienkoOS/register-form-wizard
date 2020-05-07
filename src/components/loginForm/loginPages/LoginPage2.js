@@ -55,11 +55,11 @@ export default ({ email, mobile, country, city, onChangeInput, errors }) => {
             );
           })}
         </select>
-        {errors.country ? (
+        {errors.country && (
           <small id="country" className="form-text text-danger">
             {errors.country}
           </small>
-        ) : null}
+        )}
       </div>
       <div className="form-group form-group-sm m-1">
         <label htmlFor="city" className="m-1">
@@ -88,11 +88,11 @@ export default ({ email, mobile, country, city, onChangeInput, errors }) => {
             );
           })}
         </select>
-        {errors.city ? (
+        {errors.city && (
           <small id="city" className="form-text text-danger">
             {errors.city}
           </small>
-        ) : null}
+        )}
       </div>
     </div>
   );

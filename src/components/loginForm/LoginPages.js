@@ -7,7 +7,7 @@ import LoginPage4 from "./loginPages/LoginPage4";
 export default ({ page, fields, errors, onChangeInput }) => {
   return (
     <div>
-      {page === 1 ? (
+      {page === 1 && (
         <LoginPage1
           firstName={fields.firstName}
           lastName={fields.lastName}
@@ -17,8 +17,8 @@ export default ({ page, fields, errors, onChangeInput }) => {
           errors={errors}
           onChangeInput={onChangeInput}
         />
-      ) : null}
-      {page === 2 ? (
+      )}
+      {page === 2 && (
         <LoginPage2
           email={fields.email}
           mobile={fields.mobile}
@@ -27,15 +27,15 @@ export default ({ page, fields, errors, onChangeInput }) => {
           errors={errors}
           onChangeInput={onChangeInput}
         />
-      ) : null}
-      {page === 3 ? (
+      )}
+      {page === 3 && (
         <LoginPage3
           avatar={fields.avatar}
           errors={errors.avatar}
           onChangeInput={onChangeInput}
         />
-      ) : null}
-      {page === 4 ? (
+      )}
+      {page === 4 && (
         <LoginPage4
           firstName={fields.firstName}
           lastName={fields.lastName}
@@ -45,7 +45,7 @@ export default ({ page, fields, errors, onChangeInput }) => {
           city={fields.city}
           avatar={fields.avatar}
         />
-      ) : null}
+      )}
     </div>
   );
 };

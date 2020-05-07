@@ -34,11 +34,11 @@ export default ({ avatar, onChangeInput, errors }) => {
         <label className="custom-file-label" htmlFor="avatar">
           Choose avatar...
         </label>
-        {errors ? (
+        {errors && (
           <small id="avatar" className="form-text text-danger">
             {errors}
           </small>
-        ) : null}
+        )}
       </div>
     </div>
   );
