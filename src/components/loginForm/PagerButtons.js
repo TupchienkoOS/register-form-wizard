@@ -1,7 +1,8 @@
 import React from "react";
 
 export const PagerButtons = ({
-  onChangePage,
+  onPrevPage,
+  onNextPage,
   page,
   onConfirmForm,
   confirmed,
@@ -27,15 +28,15 @@ export const PagerButtons = ({
         <button
           type="button"
           className="btn btn-secondary btn-block btn-sm mt-1"
-          onClick={() => onChangePage("prev")}
+          onClick={onPrevPage}
           disabled={page === 1 ? true : false}
         >
           Prev
         </button>
         <button
-          type="button"
+          type="submit"
           className="btn btn-secondary btn-block btn-sm mt-1 ml-1"
-          onClick={() => onChangePage("next")}
+          onClick={onNextPage}
         >
           Next
         </button>

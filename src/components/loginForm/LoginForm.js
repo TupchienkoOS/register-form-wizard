@@ -124,21 +124,22 @@ class LoginForm extends React.Component {
   };
 
   // TODO: Add required error and validation
-  onChangePage = (param) => {
-    if (param === "next") {
-      this.validation();
-      this.setState((prevState, prevProps) => {
-        if (Object.keys(prevState.errors).length === 0) {
-          this.setState({
-            page: this.state.page + 1,
-          });
-        }
-      });
-    } else if (param === "prev") {
-      this.setState({
-        page: this.state.page - 1,
-      });
-    }
+  onPrevPage = () => {
+    this.setState({
+      page: this.state.page - 1,
+    });
+  };
+
+  onNextPage = (e) => {
+    e.preventDefault();
+    this.validation();
+    this.setState((prevState, prevProps) => {
+      if (Object.keys(prevState.errors).length === 0) {
+        this.setState({
+          page: this.state.page + 1,
+        });
+      }
+    });
   };
 
   onConfirmForm = () => {
@@ -182,7 +183,8 @@ class LoginForm extends React.Component {
                 onChangeInput={this.onChangeInput}
               />
               <PagerButtons
-                onChangePage={this.onChangePage}
+                onPrevPage={this.onPrevPage}
+                onNextPage={this.onNextPage}
                 page={this.state.page}
                 onConfirmForm={this.onConfirmForm}
                 confirmed={this.state.confirmed}
