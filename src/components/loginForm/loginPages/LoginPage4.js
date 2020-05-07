@@ -1,6 +1,6 @@
 import React from "react";
-import Countries from "../../data/Countries";
-import Cities from "../../data/Cities";
+import Countries from "../../../data/Countries";
+import Cities from "../../../data/Cities";
 
 export default ({
   firstName,

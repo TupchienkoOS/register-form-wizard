@@ -1,10 +1,7 @@
 import React from "react";
 import PagerButtons from "./PagerButtons";
 import ProgressBar from "./ProgressBar";
-import LoginPage1 from "./loginPages/LoginPage#1";
-import LoginPage2 from "./loginPages/LoginPage#2";
-import LoginPage3 from "./loginPages/LoginPage#3";
-import LoginPage4 from "./loginPages/LoginPage#4";
+import LoginPages from "./LoginPages";
 
 const validationRules = {
   firstName: { firstName: "Must be 5 characters or more" },
@@ -177,45 +174,12 @@ class LoginForm extends React.Component {
           <div className="col-md-4 col-sm-4 col-xs-12 "></div>
           <div className="col-md-4 col-sm-4 col-xs-12 ">
             <form>
-              {this.state.page === 1 ? (
-                <LoginPage1
-                  firstName={fields.firstName}
-                  lastName={fields.lastName}
-                  password={fields.password}
-                  repeatPassword={fields.repeatPassword}
-                  gender={fields.gender}
-                  errors={this.state.errors}
-                  onChangeInput={this.onChangeInput}
-                />
-              ) : null}
-              {this.state.page === 2 ? (
-                <LoginPage2
-                  email={fields.email}
-                  mobile={fields.mobile}
-                  country={fields.country}
-                  city={fields.city}
-                  errors={this.state.errors}
-                  onChangeInput={this.onChangeInput}
-                />
-              ) : null}
-              {this.state.page === 3 ? (
-                <LoginPage3
-                  avatar={fields.avatar}
-                  errors={this.state.errors.avatar}
-                  onChangeInput={this.onChangeInput}
-                />
-              ) : null}
-              {this.state.page === 4 ? (
-                <LoginPage4
-                  firstName={fields.firstName}
-                  lastName={fields.lastName}
-                  email={fields.email}
-                  mobile={fields.mobile}
-                  countryId={fields.country}
-                  city={fields.city}
-                  avatar={this.state.fields.avatar}
-                />
-              ) : null}
+              <LoginPages
+                page={this.state.page}
+                fields={fields}
+                errors={this.state.errors}
+                onChangeInput={this.onChangeInput}
+              />
               <PagerButtons
                 onChangePage={this.onChangePage}
                 page={this.state.page}

@@ -1,5 +1,5 @@
 import React from "react";
-import defaultAvatar from "../../images/Blank-Profile-Icon.jpg";
+import defaultAvatar from "../../../images/Blank-Profile-Icon.jpg";
 
 export default ({ avatar, onChangeInput, errors }) => {
   const onChangeAvatar = (event) => {
