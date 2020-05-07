@@ -2,7 +2,7 @@ import React from "react";
 import Countries from "../../../data/Countries";
 import Cities from "../../../data/Cities";
 
-export default ({
+export default function LoginPage4({
   firstName,
   lastName,
   email,
@@ -10,7 +10,7 @@ export default ({
   countryId,
   city,
   avatar,
-}) => {
+}) {
   const CountryName = () => {
     return Countries.filter((country) => country.id === +countryId)[0].name;
   };
@@ -42,4 +42,4 @@ export default ({
       </div>
     </div>
   );
-};
+}

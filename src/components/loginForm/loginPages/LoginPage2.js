@@ -3,7 +3,14 @@ import Countries from "../../../data/Countries";
 import Cities from "../../../data/Cities";
 import { Input } from "./input/Input.js";
 
-export default ({ email, mobile, country, city, onChangeInput, errors }) => {
+export default function LoginPage2({
+  email,
+  mobile,
+  country,
+  city,
+  onChangeInput,
+  errors,
+}) {
   const CitiesFiteredId = Object.keys(Cities).filter(
     (city) => Cities[city].country + "" === country
   );
@@ -96,4 +103,4 @@ export default ({ email, mobile, country, city, onChangeInput, errors }) => {
       </div>
     </div>
   );
-};
+}

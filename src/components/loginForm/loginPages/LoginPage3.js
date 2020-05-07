@@ -1,6 +1,7 @@
 import React from "react";
+import defaultAvatar from "../../../images/Blank-Profile-Icon.jpg";
 
-export default ({ avatar, onChangeInput, errors }) => {
+export default function LoginPage3({ avatar, onChangeInput, errors }) {
   const onChangeAvatar = (event) => {
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -17,7 +18,11 @@ export default ({ avatar, onChangeInput, errors }) => {
   return (
     <div>
       <div>
-        <img className="img-thumbnail" alt="default icon" src={avatar} />
+        <img
+          className="img-thumbnail"
+          alt="default icon"
+          src={avatar || defaultAvatar}
+        />
       </div>
       <div className="custom-file mt-1">
         <input
@@ -42,4 +47,4 @@ export default ({ avatar, onChangeInput, errors }) => {
       </div>
     </div>
   );
-};
+}

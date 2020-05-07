@@ -4,7 +4,7 @@ import LoginPage2 from "./loginPages/LoginPage2";
 import LoginPage3 from "./loginPages/LoginPage3";
 import LoginPage4 from "./loginPages/LoginPage4";
 
-export default ({ page, fields, errors, onChangeInput }) => {
+export default function LoginPages({ page, fields, errors, onChangeInput }) {
   return (
     <div>
       {page === 1 && (
@@ -48,4 +48,4 @@ export default ({ page, fields, errors, onChangeInput }) => {
       )}
     </div>
   );
-};
+}

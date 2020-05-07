@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "./input/Input.js";
 
-export default ({
+export default function LoginPage1({
   firstName,
   lastName,
   password,
@@ -9,7 +9,7 @@ export default ({
   gender,
   onChangeInput,
   errors,
-}) => {
+}) {
   return (
     <div>
       <Input
@@ -85,4 +85,4 @@ export default ({
       </div>
     </div>
   );
-};
+}
