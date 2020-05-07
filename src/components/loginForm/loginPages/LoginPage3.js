@@ -1,5 +1,4 @@
 import React from "react";
-import defaultAvatar from "../../../images/Blank-Profile-Icon.jpg";
 
 export default ({ avatar, onChangeInput, errors }) => {
   const onChangeAvatar = (event) => {
@@ -18,11 +17,7 @@ export default ({ avatar, onChangeInput, errors }) => {
   return (
     <div>
       <div>
-        <img
-          className="img-thumbnail"
-          alt="default icon"
-          src={avatar === "" ? defaultAvatar : avatar}
-        />
+        <img className="img-thumbnail" alt="default icon" src={avatar} />
       </div>
       <div className="custom-file mt-1">
         <input

@@ -2,6 +2,7 @@ import React from "react";
 import PagerButtons from "./PagerButtons";
 import ProgressBar from "./ProgressBar";
 import LoginPages from "./LoginPages";
+import defaultAvatar from "../../images/Blank-Profile-Icon.jpg";
 
 const validationRules = {
   firstName: { firstName: "Must be 5 characters or more" },
@@ -33,7 +34,7 @@ class LoginForm extends React.Component {
         mobile: "",
         country: "",
         city: "",
-        avatar: "",
+        avatar: defaultAvatar,
       },
       errors: {},
       page: 1,
