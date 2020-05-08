@@ -49,75 +49,72 @@ class LoginForm extends React.Component {
       repeatPassword,
       gender,
     } = this.state.fields;
-    if (firstName.length < 5) {
+
+    firstName.length < 5 &&
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["firstName"]),
       }));
-    }
-    if (lastName.length < 5) {
+
+    lastName.length < 5 &&
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["lastName"]),
       }));
-    }
-    if (password.length < 6) {
+
+    password.length < 6 &&
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["password"]),
       }));
-    }
-    if (repeatPassword !== password || repeatPassword.length === 0) {
+
+    (repeatPassword !== password || repeatPassword.length === 0) &&
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(
           prevState.errors,
           validationRules["repeatPassword"]
         ),
       }));
-    }
-    if (gender === "") {
+
+    gender === "" &&
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["gender"]),
       }));
-    }
   };
 
   validationPage2 = () => {
     const { email, mobile, country, city } = this.state.fields;
-    if (!email.match(regexEmailStr)) {
+
+    !email.match(regexEmailStr) &&
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["email"]),
       }));
-    }
-    if (!mobile.match(regexMobStr)) {
+
+    !mobile.match(regexMobStr) &&
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["mobile"]),
       }));
-    }
-    if (country.length === 0) {
+
+    country.length === 0 &&
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["country"]),
       }));
-    }
-    if (city.length === 0) {
+
+    city.length === 0 &&
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["city"]),
       }));
-    }
   };
 
   validationPage3 = () => {
-    if (this.state.fields.avatar === "") {
+    this.state.fields.avatar === "" &&
       this.setState((prevState, prevProps) => ({
         errors: Object.assign(prevState.errors, validationRules["avatar"]),
       }));
-    }
   };
 
   validation = () => {
-    this.state.page === 1 && this.validationPage1();
-    if (this.state.page === 2) {
-      this.validationPage2();
-    } else if (this.state.page === 3) {
-      this.validationPage3();
-    }
+    const page = this.state.page;
+    page === 1 && this.validationPage1();
+    page === 2 && this.validationPage2();
+    page === 3 && this.validationPage3();
   };
 
   // TODO: Add required error and validation
