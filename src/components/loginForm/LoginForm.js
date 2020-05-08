@@ -42,7 +42,6 @@ class LoginForm extends React.Component {
   }
 
   validationPage1 = () => {
-    debugger;
     const {
       firstName,
       lastName,
@@ -113,9 +112,8 @@ class LoginForm extends React.Component {
   };
 
   validation = () => {
-    if (this.state.page === 1) {
-      this.validationPage1();
-    } else if (this.state.page === 2) {
+    this.state.page === 1 && this.validationPage1();
+    if (this.state.page === 2) {
       this.validationPage2();
     } else if (this.state.page === 3) {
       this.validationPage3();
@@ -132,11 +130,11 @@ class LoginForm extends React.Component {
   onNextPage = (e) => {
     e.preventDefault();
     this.validation();
-    this.setState((prevState, prevProps) => {
+    this.setState((prevState) => {
       if (Object.keys(prevState.errors).length === 0) {
-        this.setState({
-          page: this.state.page + 1,
-        });
+        return {
+          page: prevState.page + 1,
+        };
       }
     });
   };
@@ -149,7 +147,7 @@ class LoginForm extends React.Component {
 
   onChangeInput = (event) => {
     const errors = this.state.errors;
-    delete this.state.errors[event.target.name];
+    delete errors[event.target.name];
     const { name, value } = event.target;
     this.setState({
       fields: Object.assign(this.state.fields, {
