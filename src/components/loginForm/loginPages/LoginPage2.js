@@ -1,7 +1,8 @@
 import React from "react";
 import Countries from "../../../data/Countries";
 import Cities from "../../../data/Cities";
-import { Input } from "./input/Input.js";
+import { InputField } from "./inputs/InputField.js";
+import { SelectField } from "./inputs/SelectField.js";
 
 export default function LoginPage2({
   email,
@@ -11,12 +12,19 @@ export default function LoginPage2({
   onChangeInput,
   errors,
 }) {
-  const CitiesFiteredId = Object.keys(Cities).filter(
-    (city) => Cities[city].country + "" === country
-  );
+  const getCitiesOptions = () => {
+    const filteredCities = Object.entries(Cities).filter(
+      (el) => el[1].country === Number(country)
+    );
+    return filteredCities.map(([id, city]) => ({
+      id,
+      name: city.name,
+    }));
+  };
+
   return (
     <div>
-      <Input
+      <InputField
         type={"text"}
         id={"email"}
         name={"email"}
@@ -26,7 +34,7 @@ export default function LoginPage2({
         onChange={onChangeInput}
         errors={errors.email}
       />
-      <Input
+      <InputField
         type={"tel"}
         id={"mobile"}
         name={"mobile"}
@@ -36,71 +44,26 @@ export default function LoginPage2({
         onChange={onChangeInput}
         errors={errors.mobile}
       />
-      <div className="form-group form-group-sm m-1">
-        <label htmlFor="country" className="m-1">
-          Country
-        </label>
-        <select
-          className={
-            errors.country
-              ? "form-control form-control-sm is-invalid"
-              : "form-control form-control-sm"
-          }
-          id="country"
-          name="country"
-          onChange={onChangeInput}
-          value={country}
-        >
-          <option id="0" value="">
-            Select country
-          </option>
-          {Countries.map((country) => {
-            return (
-              <option key={country.id} id={country.id} value={country.id}>
-                {country.name}
-              </option>
-            );
-          })}
-        </select>
-        {errors.country && (
-          <small id="country" className="form-text text-danger">
-            {errors.country}
-          </small>
-        )}
-      </div>
-      <div className="form-group form-group-sm m-1">
-        <label htmlFor="city" className="m-1">
-          City
-        </label>
-        <select
-          className={
-            errors.city
-              ? "form-control form-control-sm is-invalid"
-              : "form-control form-control-sm"
-          }
-          id="city"
-          name="city"
-          placeholder="Select city"
-          onChange={onChangeInput}
-          value={city}
-        >
-          <option id="0" value="">
-            Select city
-          </option>
-          {CitiesFiteredId.map((city) => {
-            return (
-              <option key={city} id={city} value={city}>
-                {Cities[city].name}
-              </option>
-            );
-          })}
-        </select>
-        {errors.city && (
-          <small id="city" className="form-text text-danger">
-            {errors.city}
-          </small>
-        )}
-      </div>
+      <SelectField
+        id={"country"}
+        name={"country"}
+        options={Countries}
+        label={"Country"}
+        defaultOption={"Select country"}
+        value={country}
+        onChange={onChangeInput}
+        error={errors.country}
+      />
+      <SelectField
+        id={"city"}
+        name={"city"}
+        options={getCitiesOptions()}
+        label={"City"}
+        defaultOption={"Select city"}
+        value={city}
+        onChange={onChangeInput}
+        error={errors.city}
+      />
     </div>
   );
 }

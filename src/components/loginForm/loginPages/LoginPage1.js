@@ -1,5 +1,5 @@
 import React from "react";
-import { Input } from "./input/Input.js";
+import { InputField } from "./inputs/InputField.js";
 
 export default function LoginPage1({
   firstName,
@@ -12,7 +12,7 @@ export default function LoginPage1({
 }) {
   return (
     <div>
-      <Input
+      <InputField
         type={"text"}
         id={"firstName"}
         name={"firstName"}
@@ -22,7 +22,7 @@ export default function LoginPage1({
         onChange={onChangeInput}
         errors={errors.firstName}
       />
-      <Input
+      <InputField
         type={"text"}
         id={"lastName"}
         name={"lastName"}
@@ -32,7 +32,7 @@ export default function LoginPage1({
         onChange={onChangeInput}
         errors={errors.lastName}
       />
-      <Input
+      <InputField
         type={"password"}
         id={"password"}
         name={"password"}
@@ -42,7 +42,7 @@ export default function LoginPage1({
         onChange={onChangeInput}
         errors={errors.password}
       />
-      <Input
+      <InputField
         type={"password"}
         id={"repeatPassword"}
         name={"repeatPassword"}

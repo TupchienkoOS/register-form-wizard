@@ -1,6 +1,6 @@
 import React from "react";
-
-export const Input = ({
+// TODO(TupchiienkoOs): Change props name Errors to Error
+export const InputField = ({
   id,
   label,
   type,

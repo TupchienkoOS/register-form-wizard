@@ -105,7 +105,6 @@ class LoginForm extends React.Component {
   onNextPage = (e) => {
     e.preventDefault();
     const errors = this.validation();
-    debugger;
     if (Object.keys(errors).length === 0) {
       this.setState({
         page: this.state.page + 1,
