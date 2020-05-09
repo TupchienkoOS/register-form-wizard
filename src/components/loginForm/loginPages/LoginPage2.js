@@ -32,7 +32,7 @@ export default function LoginPage2({
         placeholder={"Email"}
         value={email}
         onChange={onChangeInput}
-        errors={errors.email}
+        error={errors.email}
       />
       <InputField
         type={"tel"}
@@ -42,7 +42,7 @@ export default function LoginPage2({
         placeholder={"Mobile"}
         value={mobile}
         onChange={onChangeInput}
-        errors={errors.mobile}
+        error={errors.mobile}
       />
       <SelectField
         id={"country"}

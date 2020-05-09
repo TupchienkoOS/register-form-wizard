@@ -20,7 +20,7 @@ export default function LoginPage1({
         placeholder={"Firstname"}
         value={firstName}
         onChange={onChangeInput}
-        errors={errors.firstName}
+        error={errors.firstName}
       />
       <InputField
         type={"text"}
@@ -30,7 +30,7 @@ export default function LoginPage1({
         placeholder={"Lastname"}
         value={lastName}
         onChange={onChangeInput}
-        errors={errors.lastName}
+        error={errors.lastName}
       />
       <InputField
         type={"password"}
@@ -40,7 +40,7 @@ export default function LoginPage1({
         placeholder={"Password"}
         value={password}
         onChange={onChangeInput}
-        errors={errors.password}
+        error={errors.password}
       />
       <InputField
         type={"password"}
@@ -50,7 +50,7 @@ export default function LoginPage1({
         placeholder={"Repeat password"}
         value={repeatPassword}
         onChange={onChangeInput}
-        errors={errors.repeatPassword}
+        error={errors.repeatPassword}
       />
       <div>
         <label className="mb-0 mt-1">Gender</label>

@@ -95,7 +95,6 @@ class LoginForm extends React.Component {
     return errors;
   };
 
-  // TODO: Add required error and validation
   onPrevPage = () => {
     this.setState({
       page: this.state.page - 1,
@@ -125,6 +124,15 @@ class LoginForm extends React.Component {
     const errors = this.state.errors;
     delete errors[event.target.name];
     const { name, value } = event.target;
+
+    if (name === "country") {
+      this.setState({
+        fields: Object.assign(this.state.fields, {
+          city: "",
+        }),
+      });
+    }
+
     this.setState({
       fields: Object.assign(this.state.fields, {
         [name]: value,

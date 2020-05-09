@@ -1,5 +1,4 @@
 import React from "react";
-// TODO(TupchiienkoOs): Change props name Errors to Error
 export const InputField = ({
   id,
   label,
@@ -8,7 +7,7 @@ export const InputField = ({
   placeholder,
   value,
   onChange,
-  errors,
+  error,
 }) => {
   return (
     <div className="form-group form-group-sm m-1">
@@ -18,7 +17,7 @@ export const InputField = ({
       <input
         type={type}
         className={
-          errors
+          error
             ? "form-control form-control-sm is-invalid"
             : "form-control form-control-sm"
         }
@@ -28,9 +27,9 @@ export const InputField = ({
         value={value}
         onChange={onChange}
       />
-      {errors ? (
+      {error ? (
         <small id={id} className="form-text text-danger">
-          {errors}
+          {error}
         </small>
       ) : null}
     </div>
