@@ -3,19 +3,6 @@ import PagerButtons from "./PagerButtons";
 import ProgressBar from "./ProgressBar";
 import LoginPages from "./LoginPages";
 
-const validationRules = {
-  firstName: { firstName: "Must be 5 characters or more" },
-  lastName: { lastName: "Must be 5 characters or more" },
-  password: { password: "Must be 6 characters or more" },
-  repeatPassword: { repeatPassword: "Must be equal password" },
-  gender: { gender: "Required" },
-  email: { email: "Email not valid" },
-  mobile: { mobile: "Mobile not valid" },
-  country: { country: "Select your country" },
-  city: { city: "Select your city" },
-  avatar: { avatar: "Upload your phot" },
-};
-
 const regexEmailStr = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
 const regexMobStr = /(^[+]{0,1}((38){0,1}|8{0,1})0[1-9]{9}$)/i;
 
@@ -41,80 +28,71 @@ class LoginForm extends React.Component {
     };
   }
 
-  validationPage1 = () => {
+  validation = () => {
+    const page = this.state.page;
+    const errors = {};
+
     const {
       firstName,
       lastName,
       password,
       repeatPassword,
       gender,
+      email,
+      mobile,
+      country,
+      city,
+      avatar,
     } = this.state.fields;
 
-    firstName.length < 5 &&
-      this.setState((prevState, prevProps) => ({
-        errors: Object.assign(prevState.errors, validationRules["firstName"]),
-      }));
+    switch (page) {
+      case 1:
+        if (firstName.length < 5) {
+          errors.firstName = "Must be 5 characters or more";
+        }
 
-    lastName.length < 5 &&
-      this.setState((prevState, prevProps) => ({
-        errors: Object.assign(prevState.errors, validationRules["lastName"]),
-      }));
+        if (lastName.length < 5) {
+          errors.lastName = "Must be 5 characters or more";
+        }
 
-    password.length < 6 &&
-      this.setState((prevState, prevProps) => ({
-        errors: Object.assign(prevState.errors, validationRules["password"]),
-      }));
+        if (password.length < 6) {
+          errors.password = "Must be 6 characters or more";
+        }
 
-    (repeatPassword !== password || repeatPassword.length === 0) &&
-      this.setState((prevState, prevProps) => ({
-        errors: Object.assign(
-          prevState.errors,
-          validationRules["repeatPassword"]
-        ),
-      }));
+        if (repeatPassword !== password || repeatPassword.length === 0) {
+          errors.repeatPassword = "Must be equal password";
+        }
 
-    gender === "" &&
-      this.setState((prevState, prevProps) => ({
-        errors: Object.assign(prevState.errors, validationRules["gender"]),
-      }));
-  };
+        if (gender === "") {
+          errors.gender = "Required";
+        }
+        break;
+      case 2:
+        if (!email.match(regexEmailStr)) {
+          errors.email = "Email not valid";
+        }
 
-  validationPage2 = () => {
-    const { email, mobile, country, city } = this.state.fields;
+        if (!mobile.match(regexMobStr)) {
+          errors.mobile = "mobile";
+        }
 
-    !email.match(regexEmailStr) &&
-      this.setState((prevState, prevProps) => ({
-        errors: Object.assign(prevState.errors, validationRules["email"]),
-      }));
+        if (country.length === 0) {
+          errors.country = "Select your country";
+        }
 
-    !mobile.match(regexMobStr) &&
-      this.setState((prevState, prevProps) => ({
-        errors: Object.assign(prevState.errors, validationRules["mobile"]),
-      }));
+        if (city.length === 0) {
+          errors.city = "Select your city";
+        }
+        break;
+      case 3:
+        if (avatar === "") {
+          errors.avatar = "Upload your photo";
+        }
 
-    country.length === 0 &&
-      this.setState((prevState, prevProps) => ({
-        errors: Object.assign(prevState.errors, validationRules["country"]),
-      }));
-
-    city.length === 0 &&
-      this.setState((prevState, prevProps) => ({
-        errors: Object.assign(prevState.errors, validationRules["city"]),
-      }));
-  };
-
-  validationPage3 = () => {
-    this.state.fields.avatar === "" &&
-      this.setState((prevState, prevProps) => ({
-        errors: Object.assign(prevState.errors, validationRules["avatar"]),
-      }));
-  };
-
-  validation = () => {
-    const page = this.state.page;
-    page === 1 && this.validationPage1();
-    page === 2 && this.validationPage2();
-    page === 3 && this.validationPage3();
+        break;
+      default:
+    }
+    return errors;
   };
 
   // TODO: Add required error and validation
@@ -126,13 +104,15 @@ class LoginForm extends React.Component {
 
   onNextPage = (e) => {
     e.preventDefault();
-    this.validation();
-    this.setState((prevState) => {
-      if (Object.keys(prevState.errors).length === 0) {
-        return {
-          page: prevState.page + 1,
-        };
-      }
+    const errors = this.validation();
+    debugger;
+    if (Object.keys(errors).length === 0) {
+      this.setState({
+        page: this.state.page + 1,
+      });
+    }
+    this.setState({
+      errors,
     });
   };
 
