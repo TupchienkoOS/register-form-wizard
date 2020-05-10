@@ -1,5 +1,5 @@
 import React from "react";
-import { InputField } from "./inputs/InputField.js";
+import { InputField } from "./fields/InputField.js";
 
 export default function LoginPage1({
   firstName,

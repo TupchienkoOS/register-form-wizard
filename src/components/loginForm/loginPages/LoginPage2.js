@@ -1,8 +1,8 @@
 import React from "react";
 import Countries from "../../../data/Countries";
 import Cities from "../../../data/Cities";
-import { InputField } from "./inputs/InputField.js";
-import { SelectField } from "./inputs/SelectField.js";
+import { InputField } from "./fields/InputField.js";
+import { SelectField } from "./fields/SelectField.js";
 
 export default function LoginPage2({
   email,
