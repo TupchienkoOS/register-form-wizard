@@ -23,13 +23,13 @@ class LoginForm extends React.Component {
         avatar: "",
       },
       errors: {},
-      page: 1,
+      step: 1,
       confirmed: false,
     };
   }
 
   validation = () => {
-    const page = this.state.page;
+    const step = this.state.step;
     const errors = {};
 
     const {
@@ -45,7 +45,7 @@ class LoginForm extends React.Component {
       avatar,
     } = this.state.fields;
 
-    switch (page) {
+    switch (step) {
       case 1:
         if (firstName.length < 5) {
           errors.firstName = "Must be 5 characters or more";
@@ -95,18 +95,18 @@ class LoginForm extends React.Component {
     return errors;
   };
 
-  onPrevPage = () => {
+  onPrevStep = () => {
     this.setState({
-      page: this.state.page - 1,
+      step: this.state.step - 1,
     });
   };
 
-  onNextPage = (e) => {
+  onNextStep = (e) => {
     e.preventDefault();
     const errors = this.validation();
     if (Object.keys(errors).length === 0) {
       this.setState({
-        page: this.state.page + 1,
+        step: this.state.step + 1,
       });
     }
     this.setState({
@@ -148,7 +148,7 @@ class LoginForm extends React.Component {
         <div className="row">
           <div className="col-1 mr-5"></div>
           <ProgressBar
-            page={this.state.page}
+            step={this.state.step}
             confirmed={this.state.confirmed}
           />
           <div className="col-3"></div>
@@ -158,15 +158,15 @@ class LoginForm extends React.Component {
           <div className="col-md-4 col-sm-4 col-xs-12 ">
             <form>
               <LoginSteps
-                page={this.state.page}
+                step={this.state.step}
                 fields={fields}
                 errors={this.state.errors}
                 onChangeInput={this.onChangeInput}
               />
               <PagerButtons
-                onPrevPage={this.onPrevPage}
-                onNextPage={this.onNextPage}
-                page={this.state.page}
+                onPrevStep={this.onPrevStep}
+                onNextStep={this.onNextStep}
+                step={this.state.step}
                 onConfirmForm={this.onConfirmForm}
                 confirmed={this.state.confirmed}
               />

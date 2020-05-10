@@ -1,18 +1,26 @@
 import React from "react";
 
 export const PagerButtons = ({
-  onPrevPage,
-  onNextPage,
-  page,
+  onPrevStep,
+  onNextStep,
+  step,
   onConfirmForm,
   confirmed,
 }) => {
   const confirmButton = () => {
     return (
-      <div className="d-flex justify-content-center m-1">
+      <div className="d-flex justify-content-around mt-2">
         <button
           type="button"
-          className="btn btn-primary btn-block btn-sm "
+          className="btn btn-secondary btn-block btn-sm mt-1"
+          onClick={onPrevStep}
+          disabled={step === 1 ? true : false}
+        >
+          Prev
+        </button>
+        <button
+          type="button"
+          className="btn btn-primary btn-block btn-sm mt-1 ml-1"
           onClick={() => onConfirmForm()}
           disabled={confirmed}
         >
@@ -28,15 +36,15 @@ export const PagerButtons = ({
         <button
           type="button"
           className="btn btn-secondary btn-block btn-sm mt-1"
-          onClick={onPrevPage}
-          disabled={page === 1 ? true : false}
+          onClick={onPrevStep}
+          disabled={step === 1 ? true : false}
         >
           Prev
         </button>
         <button
           type="submit"
           className="btn btn-secondary btn-block btn-sm mt-1 ml-1"
-          onClick={onNextPage}
+          onClick={onNextStep}
         >
           Next
         </button>
@@ -44,6 +52,6 @@ export const PagerButtons = ({
     );
   };
 
-  return page === 4 ? confirmButton() : pagerButtons();
+  return step === 4 ? confirmButton() : pagerButtons();
 };
 export default PagerButtons;

@@ -4,10 +4,10 @@ import Step2 from "./steps/Step2";
 import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
 
-export default function LoginSteps({ page, fields, errors, onChangeInput }) {
+export default function LoginSteps({ step, fields, errors, onChangeInput }) {
   return (
     <div>
-      {page === 1 && (
+      {step === 1 && (
         <Step1
           firstName={fields.firstName}
           lastName={fields.lastName}
@@ -18,7 +18,7 @@ export default function LoginSteps({ page, fields, errors, onChangeInput }) {
           onChangeInput={onChangeInput}
         />
       )}
-      {page === 2 && (
+      {step === 2 && (
         <Step2
           email={fields.email}
           mobile={fields.mobile}
@@ -28,14 +28,14 @@ export default function LoginSteps({ page, fields, errors, onChangeInput }) {
           onChangeInput={onChangeInput}
         />
       )}
-      {page === 3 && (
+      {step === 3 && (
         <Step3
           avatar={fields.avatar}
           errors={errors.avatar}
           onChangeInput={onChangeInput}
         />
       )}
-      {page === 4 && (
+      {step === 4 && (
         <Step4
           firstName={fields.firstName}
           lastName={fields.lastName}
