@@ -1,7 +1,7 @@
 import React from "react";
 import PagerButtons from "./PagerButtons";
 import ProgressBar from "./ProgressBar";
-import LoginPages from "./LoginPages";
+import LoginSteps from "./LoginSteps";
 
 const regexEmailStr = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
 const regexMobStr = /(^[+]{0,1}((38){0,1}|8{0,1})0[1-9]{9}$)/i;
@@ -157,7 +157,7 @@ class LoginForm extends React.Component {
           <div className="col-md-4 col-sm-4 col-xs-12 "></div>
           <div className="col-md-4 col-sm-4 col-xs-12 ">
             <form>
-              <LoginPages
+              <LoginSteps
                 page={this.state.page}
                 fields={fields}
                 errors={this.state.errors}

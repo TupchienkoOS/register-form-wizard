@@ -1,14 +1,14 @@
 import React from "react";
-import LoginPage1 from "./loginPages/LoginPage1";
-import LoginPage2 from "./loginPages/LoginPage2";
-import LoginPage3 from "./loginPages/LoginPage3";
-import LoginPage4 from "./loginPages/LoginPage4";
+import Step1 from "./steps/Step1";
+import Step2 from "./steps/Step2";
+import Step3 from "./steps/Step3";
+import Step4 from "./steps/Step4";
 
-export default function LoginPages({ page, fields, errors, onChangeInput }) {
+export default function LoginSteps({ page, fields, errors, onChangeInput }) {
   return (
     <div>
       {page === 1 && (
-        <LoginPage1
+        <Step1
           firstName={fields.firstName}
           lastName={fields.lastName}
           password={fields.password}
@@ -19,7 +19,7 @@ export default function LoginPages({ page, fields, errors, onChangeInput }) {
         />
       )}
       {page === 2 && (
-        <LoginPage2
+        <Step2
           email={fields.email}
           mobile={fields.mobile}
           country={fields.country}
@@ -29,14 +29,14 @@ export default function LoginPages({ page, fields, errors, onChangeInput }) {
         />
       )}
       {page === 3 && (
-        <LoginPage3
+        <Step3
           avatar={fields.avatar}
           errors={errors.avatar}
           onChangeInput={onChangeInput}
         />
       )}
       {page === 4 && (
-        <LoginPage4
+        <Step4
           firstName={fields.firstName}
           lastName={fields.lastName}
           email={fields.email}

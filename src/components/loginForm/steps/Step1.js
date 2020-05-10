@@ -1,7 +1,7 @@
 import React from "react";
 import { InputField } from "./fields/InputField.js";
 
-export default function LoginPage1({
+export default function Step1({
   firstName,
   lastName,
   password,
