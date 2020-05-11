@@ -142,7 +142,7 @@ class LoginForm extends React.Component {
   };
 
   render() {
-    const fields = this.state.fields;
+    const { step, fields, errors, confirmed } = this.state;
     return (
       <div className="container">
         <div className="row">
@@ -158,17 +158,17 @@ class LoginForm extends React.Component {
           <div className="col-md-4 col-sm-4 col-xs-12 ">
             <form>
               <LoginSteps
-                step={this.state.step}
+                step={step}
                 fields={fields}
-                errors={this.state.errors}
+                errors={errors}
                 onChangeInput={this.onChangeInput}
               />
               <PagerButtons
                 onPrevStep={this.onPrevStep}
                 onNextStep={this.onNextStep}
-                step={this.state.step}
+                step={step}
                 onConfirmForm={this.onConfirmForm}
-                confirmed={this.state.confirmed}
+                confirmed={confirmed}
               />
             </form>
           </div>
