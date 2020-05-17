@@ -124,23 +124,20 @@ class LoginForm extends React.Component {
   };
 
   onChangeInput = (event) => {
-    const errors = this.state.errors;
-    delete errors[event.target.name];
+    const { errors, values } = this.state;
     const { name, value } = event.target;
+    const updatedValues = { ...values };
+
+    const updatedErrors = { ...errors };
+    delete updatedErrors[name];
 
     if (name === "country") {
-      this.setState({
-        values: Object.assign(this.state.values, {
-          city: "",
-        }),
-      });
+      updatedValues.city = "";
     }
 
     this.setState({
-      values: Object.assign(this.state.values, {
-        [name]: value,
-      }),
-      errors,
+      values: { ...updatedValues, [name]: value },
+      errors: updatedErrors,
     });
   };
 
