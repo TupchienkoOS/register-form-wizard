@@ -97,9 +97,9 @@ class LoginForm extends React.Component {
   };
 
   onPrevStep = () => {
-    this.setState({
-      step: this.state.step - 1,
-    });
+    this.setState((state) => ({
+      step: state.step - 1,
+    }));
   };
 
   onNextStep = (e) => {
