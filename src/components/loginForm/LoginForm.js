@@ -10,7 +10,7 @@ class LoginForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      fields: {
+      values: {
         firstName: "",
         lastName: "",
         gender: "male",
@@ -43,7 +43,7 @@ class LoginForm extends React.Component {
       country,
       city,
       avatar,
-    } = this.state.fields;
+    } = this.state.values;
 
     switch (step) {
       case 1:
@@ -127,14 +127,14 @@ class LoginForm extends React.Component {
 
     if (name === "country") {
       this.setState({
-        fields: Object.assign(this.state.fields, {
+        values: Object.assign(this.state.values, {
           city: "",
         }),
       });
     }
 
     this.setState({
-      fields: Object.assign(this.state.fields, {
+      values: Object.assign(this.state.values, {
         [name]: value,
       }),
       errors,
@@ -142,7 +142,7 @@ class LoginForm extends React.Component {
   };
 
   render() {
-    const { step, fields, errors, confirmed } = this.state;
+    const { step, values, errors, confirmed } = this.state;
     return (
       <div className="container">
         <div className="row">
@@ -159,7 +159,7 @@ class LoginForm extends React.Component {
             <form>
               <LoginSteps
                 step={step}
-                fields={fields}
+                values={values}
                 errors={errors}
                 onChangeInput={this.onChangeInput}
               />
