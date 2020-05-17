@@ -28,22 +28,23 @@ class LoginForm extends React.Component {
     };
   }
 
-  validation = () => {
-    const step = this.state.step;
-    const errors = {};
-
+  getErrors = () => {
     const {
-      firstName,
-      lastName,
-      password,
-      repeatPassword,
-      gender,
-      email,
-      mobile,
-      country,
-      city,
-      avatar,
-    } = this.state.values;
+      step,
+      values: {
+        firstName,
+        lastName,
+        password,
+        repeatPassword,
+        gender,
+        email,
+        mobile,
+        country,
+        city,
+        avatar,
+      },
+    } = this.state;
+    const errors = {};
 
     switch (step) {
       case 1:
@@ -103,7 +104,7 @@ class LoginForm extends React.Component {
 
   onNextStep = (e) => {
     e.preventDefault();
-    const errors = this.validation();
+    const errors = this.getErrors();
     if (Object.keys(errors).length === 0) {
       this.setState({
         step: this.state.step + 1,
