@@ -1,7 +1,7 @@
 import React from "react";
 import defaultAvatar from "../../../images/Blank-Profile-Icon.jpg";
 
-export default function Step3({ avatar, onChangeInput, errors }) {
+export default function Avatar({ avatar, onChangeInput, errors }) {
   const onChangeAvatar = (event) => {
     const reader = new FileReader();
     reader.onload = (event) => {

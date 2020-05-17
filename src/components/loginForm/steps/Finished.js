@@ -2,7 +2,7 @@ import React from "react";
 import Countries from "../../../data/Countries";
 import Cities from "../../../data/Cities";
 
-export default function Step4({
+export default function Finished({
   firstName,
   lastName,
   email,

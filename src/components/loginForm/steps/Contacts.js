@@ -4,7 +4,7 @@ import Cities from "../../../data/Cities";
 import { InputField } from "./fields/InputField.js";
 import { SelectField } from "./fields/SelectField.js";
 
-export default function Step2({
+export default function Contacts({
   email,
   mobile,
   country,

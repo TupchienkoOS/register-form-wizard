@@ -1,14 +1,14 @@
 import React from "react";
-import Step1 from "./steps/Step1";
-import Step2 from "./steps/Step2";
-import Step3 from "./steps/Step3";
-import Step4 from "./steps/Step4";
+import Basic from "./steps/Basic";
+import Contacts from "./steps/Contacts";
+import Avatar from "./steps/Avatar";
+import Finished from "./steps/Finished";
 
 export default function LoginSteps({ step, values, errors, onChangeInput }) {
   return (
     <div>
       {step === 1 && (
-        <Step1
+        <Basic
           firstName={values.firstName}
           lastName={values.lastName}
           password={values.password}
@@ -19,7 +19,7 @@ export default function LoginSteps({ step, values, errors, onChangeInput }) {
         />
       )}
       {step === 2 && (
-        <Step2
+        <Contacts
           email={values.email}
           mobile={values.mobile}
           country={values.country}
@@ -29,14 +29,14 @@ export default function LoginSteps({ step, values, errors, onChangeInput }) {
         />
       )}
       {step === 3 && (
-        <Step3
+        <Avatar
           avatar={values.avatar}
           errors={errors.avatar}
           onChangeInput={onChangeInput}
         />
       )}
       {step === 4 && (
-        <Step4
+        <Finished
           firstName={values.firstName}
           lastName={values.lastName}
           email={values.email}
