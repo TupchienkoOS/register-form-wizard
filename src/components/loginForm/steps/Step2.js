@@ -25,41 +25,41 @@ export default function Step2({
   return (
     <div>
       <InputField
-        type={"text"}
-        id={"email"}
-        name={"email"}
-        label={"Email"}
-        placeholder={"Email"}
+        type="text"
+        id="email"
+        name="email"
+        label="Email"
+        placeholder="Email"
         value={email}
         onChange={onChangeInput}
         error={errors.email}
       />
       <InputField
-        type={"tel"}
-        id={"mobile"}
-        name={"mobile"}
-        label={"Mobile"}
-        placeholder={"Mobile"}
+        type="tel"
+        id="mobile"
+        name="mobile"
+        label="Mobile"
+        placeholder="Mobile"
         value={mobile}
         onChange={onChangeInput}
         error={errors.mobile}
       />
       <SelectField
-        id={"country"}
-        name={"country"}
+        id="country"
+        name="country"
         options={Countries}
-        label={"Country"}
-        defaultOption={"Select country"}
+        label="Country"
+        defaultOption="Select country"
         value={country}
         onChange={onChangeInput}
         error={errors.country}
       />
       <SelectField
-        id={"city"}
-        name={"city"}
+        id="city"
+        name="city"
         options={getCitiesOptions()}
-        label={"City"}
-        defaultOption={"Select city"}
+        label="City"
+        defaultOption="Select city"
         value={city}
         onChange={onChangeInput}
         error={errors.city}

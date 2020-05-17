@@ -13,41 +13,41 @@ export default function Step1({
   return (
     <div>
       <InputField
-        type={"text"}
-        id={"firstName"}
-        name={"firstName"}
-        label={"FirstName"}
-        placeholder={"Firstname"}
+        type="text"
+        id="firstName"
+        name="firstName"
+        label="FirstName"
+        placeholder="Firstname"
         value={firstName}
         onChange={onChangeInput}
         error={errors.firstName}
       />
       <InputField
-        type={"text"}
-        id={"lastName"}
-        name={"lastName"}
-        label={"LastName"}
-        placeholder={"Lastname"}
+        type="text"
+        id="lastName"
+        name="lastName"
+        label="LastName"
+        placeholder="Lastname"
         value={lastName}
         onChange={onChangeInput}
         error={errors.lastName}
       />
       <InputField
-        type={"password"}
-        id={"password"}
-        name={"password"}
-        label={"Password"}
-        placeholder={"Password"}
+        type="password"
+        id="password"
+        name="password"
+        label="Password"
+        placeholder="Password"
         value={password}
         onChange={onChangeInput}
         error={errors.password}
       />
       <InputField
-        type={"password"}
-        id={"repeatPassword"}
-        name={"repeatPassword"}
-        label={"Repeat password"}
-        placeholder={"Repeat password"}
+        type="password"
+        id="repeatPassword"
+        name="repeatPassword"
+        label="Repeat password"
+        placeholder="Repeat password"
         value={repeatPassword}
         onChange={onChangeInput}
         error={errors.repeatPassword}
