@@ -21,7 +21,7 @@ export default function Step4({
         <img
           className="img-thumbnail mb-1"
           alt="default icon"
-          src={avatar === "" ? "./images/Blank-Profile-Icon.jpg" : avatar}
+          src={avatar || "./images/Blank-Profile-Icon.jpg"}
         />
       </div>
       <div className="col-6">
