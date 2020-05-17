@@ -107,12 +107,14 @@ class LoginForm extends React.Component {
     const errors = this.getErrors();
     if (Object.keys(errors).length === 0) {
       this.setState({
+        errors: {},
         step: this.state.step + 1,
       });
+    } else {
+      this.setState({
+        errors,
+      });
     }
-    this.setState({
-      errors,
-    });
   };
 
   onConfirmForm = () => {
