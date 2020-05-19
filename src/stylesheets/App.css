@@ -106,7 +106,7 @@ form {
   null;
 } */
 
-.progressbar li.active:before {
+.progressbar li.complete:before {
   border-color: #7097ae;
   background-color: #ddd;
   content: "√";
@@ -115,8 +115,19 @@ form {
   color: #7097ae;
 }
 
-.progressbar li.active + li:after {
+.progressbar li.complete + li:after {
   background-color: #7097ae;
   border-color: #7097ae;
   border: 1px solid #7097ae;
+}
+
+.progressbar li.active:before {
+  border-color: #fdf0d5;
+  background-color: #fdf0d5;
+  color: #7097ae;
+}
+.progressbar li.active + li:after {
+  background-color: #fdf0d5;
+  border-color: #fdf0d5;
+  border: 1px solid #fdf0d5;
 }

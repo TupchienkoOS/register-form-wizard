@@ -14,14 +14,14 @@ export const PagerButtons = ({
           type="button"
           className="btn btn-secondary btn-block btn-sm mt-1"
           onClick={onPrevStep}
-          disabled={step === 1 ? true : false}
+          disabled={step === 1}
         >
           Prev
         </button>
         <button
           type="button"
           className="btn btn-primary btn-block btn-sm mt-1 ml-1"
-          onClick={() => onConfirmForm()}
+          onClick={onConfirmForm}
           disabled={confirmed}
         >
           {confirmed ? "Confirmed" : "Confirm"}
@@ -37,7 +37,7 @@ export const PagerButtons = ({
           type="button"
           className="btn btn-secondary btn-block btn-sm mt-1"
           onClick={onPrevStep}
-          disabled={step === 1 ? true : false}
+          disabled={step === 1}
         >
           Prev
         </button>
