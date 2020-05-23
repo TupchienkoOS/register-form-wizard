@@ -1,4 +1,6 @@
 import React from "react";
+import cx from "classnames";
+
 export const InputField = ({
   id,
   label,
@@ -16,11 +18,10 @@ export const InputField = ({
       </label>
       <input
         type={type}
-        className={
-          error
-            ? "form-control form-control-sm is-invalid"
-            : "form-control form-control-sm"
-        }
+        className={cx({
+          "form-control form-control-sm is-invalid": error,
+          "form-control form-control-sm": !error,
+        })}
         id={id}
         name={name}
         placeholder={placeholder}

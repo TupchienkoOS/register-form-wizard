@@ -1,7 +1,8 @@
 import React from "react";
-import defaultAvatar from "../../../images/Blank-Profile-Icon.jpg";
+import DefaultAvatar from "../../../images/Blank-Profile-Icon.jpg";
+import cx from "classnames";
 
-export default function Avatar({ avatar, onChangeInput, errors }) {
+export default function Avatar({ avatar, onChangeInput, error }) {
   const onChangeAvatar = (event) => {
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -21,17 +22,16 @@ export default function Avatar({ avatar, onChangeInput, errors }) {
         <img
           className="img-thumbnail"
           alt="default icon"
-          src={avatar || defaultAvatar}
+          src={avatar || DefaultAvatar}
         />
       </div>
       <div className="custom-file mt-1">
         <input
           type="file"
-          className={
-            errors
-              ? "custom-file-input custom-file-input-sm is-invalid"
-              : "custom-file-input custom-file-input-sm"
-          }
+          className={cx({
+            "custom-file-input custom-file-input-sm is-invalid": error,
+            "custom-file-input custom-file-input-sm": !error,
+          })}
           id="avatar"
           name="avatar"
           onChange={onChangeAvatar}
@@ -39,9 +39,9 @@ export default function Avatar({ avatar, onChangeInput, errors }) {
         <label className="custom-file-label" htmlFor="avatar">
           Choose avatar...
         </label>
-        {errors && (
+        {error && (
           <small id="avatar" className="form-text text-danger">
-            {errors}
+            {error}
           </small>
         )}
       </div>

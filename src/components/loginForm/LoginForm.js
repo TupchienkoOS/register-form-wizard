@@ -1,5 +1,5 @@
 import React from "react";
-import PagerButtons from "./PagerButtons";
+import Navigation from "./Navigation";
 import ProgressBar from "./ProgressBar";
 import LoginSteps from "./LoginSteps";
 
@@ -163,7 +163,7 @@ class LoginForm extends React.Component {
                 errors={errors}
                 onChangeInput={this.onChangeInput}
               />
-              <PagerButtons
+              <Navigation
                 onPrevStep={this.onPrevStep}
                 onNextStep={this.onNextStep}
                 step={step}
