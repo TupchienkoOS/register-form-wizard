@@ -144,33 +144,35 @@ class LoginForm extends React.Component {
   render() {
     const { step, values, errors, confirmed } = this.state;
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-1 mr-5"></div>
-          <ProgressBar
-            step={this.state.step}
-            confirmed={this.state.confirmed}
-          />
-          <div className="col-3"></div>
-        </div>
-        <div className="row">
-          <div className="col-md-4 col-sm-4 col-xs-12 "></div>
-          <div className="col-md-4 col-sm-4 col-xs-12 ">
-            <form>
-              <LoginSteps
-                step={step}
-                values={values}
-                errors={errors}
-                onChangeInput={this.onChangeInput}
-              />
-              <Navigation
-                onPrevStep={this.onPrevStep}
-                onNextStep={this.onNextStep}
-                step={step}
-                onConfirmForm={this.onConfirmForm}
-                confirmed={confirmed}
-              />
-            </form>
+      <div class="row centered-form center-block">
+        <div class="container col-md-10 col-md-offset-1">
+          <div className="row">
+            <div className="col-1 mr-5"></div>
+            <ProgressBar
+              step={this.state.step}
+              confirmed={this.state.confirmed}
+            />
+            <div className="col-3"></div>
+          </div>
+          <div className="row">
+            <div className="col-md-4 col-sm-4 col-xs-12 "></div>
+            <div className="col-md-4 col-sm-4 col-xs-12 ">
+              <form>
+                <LoginSteps
+                  step={step}
+                  values={values}
+                  errors={errors}
+                  onChangeInput={this.onChangeInput}
+                />
+                <Navigation
+                  onPrevStep={this.onPrevStep}
+                  onNextStep={this.onNextStep}
+                  step={step}
+                  onConfirmForm={this.onConfirmForm}
+                  confirmed={confirmed}
+                />
+              </form>
+            </div>
           </div>
         </div>
       </div>
