@@ -144,8 +144,8 @@ class LoginForm extends React.Component {
   render() {
     const { step, values, errors, confirmed } = this.state;
     return (
-      <div class="row centered-form center-block">
-        <div class="container col-md-10 col-md-offset-1">
+      <div className="row centered-form center-block">
+        <div className="container col-md-10 col-md-offset-1">
           <div className="row">
             <div className="col-1 mr-5"></div>
             <ProgressBar

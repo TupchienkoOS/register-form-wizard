@@ -12,14 +12,26 @@ export default function Contacts({
   onChangeInput,
   errors,
 }) {
-  const getCitiesOptions = () => {
-    const filteredCities = Object.entries(Cities).filter(
-      (el) => el[1].country === Number(country)
+  const getCitiesOptions = (сities) => {
+    const filteredCities = Object.entries(сities).filter(
+      (el) => Number(el[1].country) === Number(country)
     );
-    return filteredCities.map(([id, city]) => ({
-      id,
-      name: city.name,
-    }));
+    return getSelectOptions(
+      filteredCities.map(([id, city]) => ({
+        id,
+        name: city.name,
+      }))
+    );
+  };
+
+  const getSelectOptions = (items) => {
+    return items.map((item) => {
+      return (
+        <option key={item.id} id={item.id} value={item.id}>
+          {item.name}
+        </option>
+      );
+    });
   };
 
   return (
@@ -47,7 +59,7 @@ export default function Contacts({
       <SelectField
         id="country"
         name="country"
-        options={Countries}
+        options={getSelectOptions(Countries)}
         label="Country"
         defaultOption="Select country"
         value={country}
@@ -57,7 +69,7 @@ export default function Contacts({
       <SelectField
         id="city"
         name="city"
-        options={getCitiesOptions()}
+        options={getCitiesOptions(Cities)}
         label="City"
         defaultOption="Select city"
         value={city}

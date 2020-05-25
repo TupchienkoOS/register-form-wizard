@@ -29,13 +29,7 @@ export const SelectField = ({
         <option id="0" value="">
           {defaultOption}
         </option>
-        {options.map((item) => {
-          return (
-            <option key={item.id} id={item.id} value={item.id}>
-              {item.name}
-            </option>
-          );
-        })}
+        {options}
       </select>
       {error && (
         <small id="country" className="form-text text-danger">
